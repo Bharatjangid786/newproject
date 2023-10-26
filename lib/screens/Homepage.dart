@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                               IconButton(
                                 icon: _isAddedTofav
                                     ? Icon(
-                                        Icons.favorite_border,
+                                        Icons.favorite,
                                         color: Colors.red,
                                       )
                                     : Icon(
@@ -221,9 +221,10 @@ class _HomePageState extends State<HomePage> {
                                     fontWeight: selectedIndex == index
                                         ? FontWeight.bold
                                         : FontWeight.w300,
-                                    color: selectedIndex == index
-                                        ? Constants.primaryColor
-                                        : Colors.white),
+                                    // color: selectedIndex == index
+                                    //     ? Constants.primaryColor
+                                    //     : Colors.white
+                                    color: Colors.white),
                               ),
                             ],
                           ),
@@ -235,19 +236,30 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
-                                    color: selectedIndex == index
-                                        ? Constants.primaryColor
-                                        : Colors.white),
+                                    // color: selectedIndex == index
+                                    //     ? Constants.primaryColor
+                                    //     : Colors.white
+
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 80,
                               ),
                               Text(
                                 '\$${Plant.plantList[index].price}',
                                 style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
-                                    color: selectedIndex == index
-                                        ? Constants.primaryColor
-                                        : Colors.white),
+                                    // color: selectedIndex == index
+                                    color: Colors.white
+                                    // ? Constants.primaryColor
+                                    // : Colors.white
+
+                                    ),
                               ),
+                              SizedBox(
+                                width: 2,
+                              )
                             ],
                           )
                         ]),
