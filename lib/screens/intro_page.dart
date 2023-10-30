@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:newproject/screens/home.dart';
 import 'package:newproject/screens/signin_page.dart';
 import 'package:page_transition/page_transition.dart';
 import '../constraint.dart';
@@ -100,6 +101,10 @@ class IntroSlide extends StatelessWidget {
       colorDot: Color.fromARGB(255, 238, 249, 226),
       colorActiveDot: Constants.primaryColor,
       onSkipPress: () {
+        // Navigator.pushReplacement(
+        //     context,
+        //     PageTransition(
+        //         child: Home(), type: PageTransitionType.bottomToTop));
         Navigator.pushReplacement(
             context,
             PageTransition(

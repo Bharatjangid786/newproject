@@ -1,11 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/signin_page.dart';
+import 'package:newproject/utilts/utlits.dart';
 
 import '../constraint.dart';
 
-class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  ForgotPassword({Key? key}) : super(key: key);
 
+  @override
+  State<ForgotPassword> createState() => _ForgotPasswordState();
+}
+
+final TextEditingController emailController = TextEditingController();
+FirebaseAuth _auth = FirebaseAuth.instance;
+
+class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,13 +40,23 @@ class ForgotPassword extends StatelessWidget {
                 height: 30,
               ),
               TextField(
+                controller: emailController,
                 decoration: InputDecoration(labelText: "Email"),
               ),
               const SizedBox(
                 height: 30,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  _auth
+                      .sendPasswordResetEmail(
+                          email: emailController.text.toString())
+                      .then((value) {
+                    Utilts().toastmassage('Cheak your gmail for reset passord');
+                  }).onError((error, stackTrace) {
+                    Utilts().toastmassage(error.toString());
+                  });
+                },
                 child: Container(
                   width: size.width,
                   decoration: BoxDecoration(
@@ -63,7 +83,7 @@ class ForgotPassword extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignIn()),
+                    MaterialPageRoute(builder: (context) => const SignIn()),
                   );
                 },
                 child: Center(

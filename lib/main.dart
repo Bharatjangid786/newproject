@@ -6,9 +6,20 @@ import 'package:newproject/screens/fav_page.dart';
 import 'package:newproject/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'models/plants.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'screens/intro_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyDGm1VOuYEIdNQYebOuNsPVsA_xlWyetYA",
+      appId: "1:915820333142:android:cc2bdcc579274e7caa13f7",
+      messagingSenderId: "915820333142",
+      projectId: "plantapp-4c7af",
+      storageBucket: "plantapp-4c7af.appspot.com",
+    ),
+  );
   runApp(
     MultiProvider(
       providers: [
